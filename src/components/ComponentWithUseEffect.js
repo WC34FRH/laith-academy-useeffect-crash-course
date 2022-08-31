@@ -13,6 +13,7 @@ export default function ComponentWithUseEffect() {
   }, []);
 
   useEffect(() => {
+    console.log("FETCHING IMAGE");
     if (boxPicked === 0) {
       setImage("");
     } else {
@@ -26,6 +27,16 @@ export default function ComponentWithUseEffect() {
         "https://randomfox.ca/floof/?ref=apilist.fun"
       );
       setImage(response.data.image);
+    } else if (boxId === 2) {
+      const response = await axios.get(
+        "https://aws.random.cat/meow?ref=apilist.fun"
+      );
+      setImage(response.data.file);
+    } else if (boxId === 3) {
+      const response = await axios.get(
+        "https://dog.ceo/api/breeds/image/random"
+      );
+      setImage(response.data.message);
     }
   };
 
